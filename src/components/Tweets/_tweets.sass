@@ -1,14 +1,43 @@
 @import "../../styles/_variables.sass"
 @import "../../styles/_breakpoints.sass"
 
-.tweets-wrapper
+.tweets
   width: 80%
   margin: 0 2%
-  display: flex
-  justify-content: space-between
   +breakpoint(xsmax)
     width: 100%
     flex-direction: column
+  &__options
+    margin-bottom: 30px
+    display: flex
+    justify-content: space-between
+  &__button
+    cursor: pointer
+    border: 1px solid $color--light-blue
+    background-color: $color--light-blue
+    outline: 0
+    color: $color--white
+    padding: 8px 12px
+    border-radius: 5px
+    font-size: 13px
+    margin-left: 10px
+    width: 70px
+    +breakpoint(xsmax)
+      display: none
+  &__input
+    outline: 0
+    border: 1px solid $color--light-blue
+    padding: 10px
+    width: calc(30% - 20px)
+    font-size: 14px
+    +breakpoint(xsmax)
+      width: calc(100% - 20px)
+  &__wrapper
+    width: 100%
+    display: flex
+    justify-content: space-between
+    +breakpoint(xsmax)
+      flex-direction: column
   &__user
     width: calc(30% - 40px)
     text-align: center
@@ -39,3 +68,6 @@
     margin: 0
   &__text
     font-size: 18px
+  &__error
+    font-size: 18px
+    color: $color--red
