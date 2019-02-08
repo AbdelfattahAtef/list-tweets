@@ -21,12 +21,15 @@ const updateBackgroundColor = (color, e) => {
  * @param color
  */
 const updateTextColor = (color, e) => {
-    const usersItems = document.getElementsByClassName('tweets-wrapper__user');
+    const usersItems = document.getElementsByClassName('tweets__user');
     for(let i =0; i < usersItems.length; i++){
-        document.getElementsByClassName('tweets-wrapper__user')[i].style.color = color;
-        document.getElementsByClassName('tweets-wrapper__user')[i].style.borderColor = color;
+        document.getElementsByClassName('tweets__user')[i].style.color = color;
+        document.getElementsByClassName('tweets__user')[i].style.borderColor = color;
     }
-
+    const userDataItems = document.getElementsByClassName('tweets__user-data');
+    for(let i =0; i < userDataItems.length; i++){
+        document.getElementsByClassName('tweets__user-data')[i].style.borderColor = color;
+    }
     const colorsItems = document.getElementsByClassName('sidebar__section--color__item');
     for(let i =0; i < colorsItems.length; i++){
         document.getElementsByClassName('sidebar__section--color__item')[i].style.borderWidth = '1px';
