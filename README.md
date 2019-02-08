@@ -12,8 +12,6 @@ Below you will find some information on how to perform common tasks.
 Project Dependencies:
 
 - create-react-app to start a very simple application
-- lodash for some make sorting and range to display specific number of cards
-- jQuery to handle scrolling to load more data
 - axios to make requests
 - eslint
 - prettier
