@@ -16,14 +16,16 @@ class Tweets extends Component {
             const users = document.getElementsByClassName('tweets__user');
             for(let i = 0; i < users.length; i++){
                 document.getElementsByClassName('tweets__user')[i].style.width = 'calc(100% - 40px)';
-                document.getElementsByClassName('tweets__user')[i].style.marginBottom = '15px'
+                document.getElementsByClassName('tweets__user')[i].style.marginBottom = '15px';
+                document.getElementsByClassName('tweets__user-followers')[i].style.justifyContent = 'center';
             }
         }else{
             document.getElementsByClassName('tweets__wrapper')[0].style.flexDirection = 'row';
             const users = document.getElementsByClassName('tweets__user');
             for(let i = 0; i < users.length; i++){
                 document.getElementsByClassName('tweets__user')[i].style.width = 'calc(30% - 40px)';
-                document.getElementsByClassName('tweets__user')[i].style.marginBottom = '0px'
+                document.getElementsByClassName('tweets__user')[i].style.marginBottom = '0px';
+                document.getElementsByClassName('tweets__user-followers')[i].style.justifyContent = 'space-between';
             }
         }
     }
