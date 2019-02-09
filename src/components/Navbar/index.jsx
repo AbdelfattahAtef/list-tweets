@@ -17,7 +17,6 @@ class Navbar extends Component {
     render(){
         return (
             <div className="navbar">
-                {/*<i className="fa fa-bars" onClick={this.toggleSidebarDisplay}/>*/}
                 <button onClick={this.toggleSidebarDisplay}>
                     {this.state.toggleSidebar ? 'Hide Sidebar' : 'Open Sidebar'}
                 </button>
