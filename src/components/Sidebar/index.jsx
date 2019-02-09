@@ -42,9 +42,9 @@ const updateTextColor = (color, e) => {
  * @param fontFamily
  */
 const updateTweetsFontFamily = fontFamily => {
-    const tweetsList = document.getElementsByClassName('tweets-wrapper__text');
+    const tweetsList = document.getElementsByClassName('tweets__text');
     for(let i =0; i < tweetsList.length; i++){
-        document.getElementsByClassName('tweets-wrapper__text')[i].style.fontFamily = fontFamily
+        document.getElementsByClassName('tweets__text')[i].style.fontFamily = fontFamily
     }
 };
 
@@ -53,9 +53,9 @@ const updateTweetsFontFamily = fontFamily => {
  * @param fontSizeVal
  */
 const handleFontSizeChange = fontSizeVal => {
-    const tweetsList = document.getElementsByClassName('tweets-wrapper__text');
+    const tweetsList = document.getElementsByClassName('tweets__text');
     for(let i =0; i<tweetsList.length; i++){
-        document.getElementsByClassName('tweets-wrapper__text')[i].style.fontSize = fontSizeVal
+        document.getElementsByClassName('tweets__text')[i].style.fontSize = fontSizeVal
     }
 };
 
