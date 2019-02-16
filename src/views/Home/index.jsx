@@ -29,7 +29,6 @@ class Home extends Component {
         this.setState({
             toggleSidebar: displaySidebar
         });
-        utils.loadTwitterScript();
     };
 
     /**
@@ -41,8 +40,7 @@ class Home extends Component {
         this.setState({
             tweetsNumber: value && value <= 10 ? value : 10,
         });
-
-
+        utils.loadTwitterScript();
     };
 
     render() {
