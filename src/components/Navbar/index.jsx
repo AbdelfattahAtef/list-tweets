@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import 'font-awesome/css/font-awesome.min.css';
 import "./_navbar.sass";
 
 class Navbar extends Component {
@@ -18,7 +19,7 @@ class Navbar extends Component {
         return (
             <div className="navbar">
                 <button onClick={this.toggleSidebarDisplay}>
-                    {this.state.toggleSidebar ? 'Hide Sidebar' : 'Open Sidebar'}
+                    <i className={this.state.toggleSidebar ? 'fa fa-close' : 'fa fa-bars'}/>
                 </button>
             </div>
         );
