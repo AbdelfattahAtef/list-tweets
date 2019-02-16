@@ -14,15 +14,15 @@
   align-items: center
   flex-direction: column
   &__message
-    font-size: $text--large-size
-    font-weight: $text--weight-bold
+    font-size: 30px
+    font-weight: bold
     color: $color--light-blue
     font-family: 'ZCOOL QingKe HuangYou', cursive
   .spinner
     -webkit-animation: spin 1s linear infinite
       animation: spin 1s linear infinite
     border: 3px solid $color--light-blue
-    border-top: 3px solid $color--yellow
+    border-top: 3px solid $color--red
     border-radius: 50%
     height: 75px
     width: 75px
@@ -35,7 +35,7 @@
 
 @-webkit-keyframes spin
   to
-    border-top-color: $color--yellow
+    border-top-color: $color--light-blue
     -webkit-transform: rotate(360deg)
     transform: rotate(360deg)
 
@@ -43,7 +43,7 @@
 
 @keyframes spin
   to
-    border-top-color: $color--yellow
+    border-top-color: $color--red
     -webkit-transform: rotate(360deg)
     transform: rotate(360deg)
 

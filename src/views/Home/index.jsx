@@ -5,12 +5,20 @@ import Header from "../../components/Header";
 import Navbar from "../../components/Navbar";
 import Sidebar from "../../components/Sidebar";
 import Tweets from "../../components/Tweets";
-
+import Loader from "../../components/Loader";
 class Home extends Component {
     state = {
         toggleSidebar: false,
         tweetsNumber: 10,
+        showLoader: false,
     };
+
+    componentDidMount(){
+        this.setState({ showLoader: true });
+        setTimeout(() => {
+            this.setState({ showLoader: false });
+        }, 3000)
+    }
 
     /**
      * Toggle display of sidebar
@@ -36,16 +44,20 @@ class Home extends Component {
 
     render() {
         return (
-            <div className="home-wrapper">
-                <Navbar toggleSidebar={this.toggleSidebar}/>
-                <Header/>
-                <div className="home-wrapper__content">
-                    <Sidebar
-                        toggleSidebar={this.state.toggleSidebar}
-                        numberOfTweets={this.numberOfTweets}/>
-                    <Tweets tweetsNumber={this.state.tweetsNumber}/>
+            <React.Fragment>
+                <div className="home-wrapper">
+                    <Navbar toggleSidebar={this.toggleSidebar}/>
+                    <Header/>
+                    <div className="home-wrapper__content">
+                        <Sidebar
+                            toggleSidebar={this.state.toggleSidebar}
+                            numberOfTweets={this.numberOfTweets}/>
+                        <Tweets tweetsNumber={this.state.tweetsNumber}/>
+                    </div>
                 </div>
-            </div>
+
+                {this.state.showLoader && <Loader />}
+            </React.Fragment>
         );
     }
 }
