@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import utils from '../../utils'
 import './_home.sass';
 
 import Header from "../../components/Header";
@@ -27,7 +28,8 @@ class Home extends Component {
     toggleSidebar = (displaySidebar) => {
         this.setState({
             toggleSidebar: displaySidebar
-        })
+        });
+        utils.loadTwitterScript();
     };
 
     /**
@@ -40,12 +42,7 @@ class Home extends Component {
             tweetsNumber: value && value <= 10 ? value : 10,
         });
 
-        const script = document.createElement("script");
-        script.type = "text/javascript";
-        script.src = "https://platform.twitter.com/widgets.js";
-        script.charset = "utf-8";
-        document.getElementsByTagName("head")[0].appendChild(script);
-        return false;
+
     };
 
     render() {

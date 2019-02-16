@@ -11,7 +11,7 @@ class Tweets extends Component {
     };
 
     componentDidMount(){
-        if(localStorage.getItem('view') === 'grid' && window.screen.width > 1042){
+        if(localStorage.getItem('view') === 'grid' || window.screen.width > 1042){
             utils.handleTweetsView('grid');
         }else{
             utils.handleTweetsView('list')
@@ -33,8 +33,12 @@ class Tweets extends Component {
         }else{
             this.setState({
                 users: constants.users
-            })
+            });
+            utils.loadTwitterScript();
         }
+        utils.handleFontSizeChange();
+        utils.updateTweetsFontFamily();
+        utils.updateTextColor();
     }
 
     render() {
@@ -56,49 +60,51 @@ class Tweets extends Component {
                             onClick={() => utils.handleTweetsView('list')}>List</button>
                     </div>
                 </div>
-                <div className="tweets__wrapper">
-                    {
-                        this.state.users.length > 0 &&
-                        this.state.users.map(user => (
-                            <div className="tweets__user" key={user.name}>
-                                <div className="tweets__user-data">
-                                    <img src={user.image}
-                                         alt={user.name}
-                                         className="tweets__user-image"
-                                    />
-                                    <h3 className="tweets__user-name">{user.userName}</h3>
-                                    <p className="tweets__user-sub-name">{user.name}</p>
-                                    <div className="tweets__user-followers">
-                                        <div>
-                                            <h4 className="tweets__user-followers-label">Tweets</h4>
-                                            <p className="tweets__user-followers-text">{user.numOfTweets}</p>
-                                        </div>
-                                        <div>
-                                            <h4 className="tweets__user-followers-label">Following</h4>
-                                            <p className="tweets__user-followers-text">{user.numOfFollowing}</p>
-                                        </div>
-                                        <div>
-                                            <h4 className="tweets__user-followers-label">Followers</h4>
-                                            <p className="tweets__user-followers-text">{user.numOfFollowers}</p>
+                {
+                    this.state.users.length > 0 &&
+                    <div className="tweets__wrapper">
+                        {
+                            this.state.users.map(user => (
+                                <div className="tweets__user" key={user.name}>
+                                    <div className="tweets__user-data">
+                                        <img src={user.image}
+                                             alt={user.name}
+                                             className="tweets__user-image"
+                                        />
+                                        <h3 className="tweets__user-name">{user.userName}</h3>
+                                        <p className="tweets__user-sub-name">{user.name}</p>
+                                        <div className="tweets__user-followers">
+                                            <div>
+                                                <h4 className="tweets__user-followers-label">Tweets</h4>
+                                                <p className="tweets__user-followers-text">{user.numOfTweets}</p>
+                                            </div>
+                                            <div>
+                                                <h4 className="tweets__user-followers-label">Following</h4>
+                                                <p className="tweets__user-followers-text">{user.numOfFollowing}</p>
+                                            </div>
+                                            <div>
+                                                <h4 className="tweets__user-followers-label">Followers</h4>
+                                                <p className="tweets__user-followers-text">{user.numOfFollowers}</p>
+                                            </div>
                                         </div>
                                     </div>
+                                    {
+                                        _.range(this.props.tweetsNumber).map((tweetNum, index) => (
+                                            <div className="tweets__data" key={`${tweetNum}-Number`}>
+                                                <p
+                                                    className="tweets__text"
+                                                    key={`${user.tweets[index].id}-${user.name}`}
+                                                    dangerouslySetInnerHTML={{
+                                                        __html: user.tweets[index].text,
+                                                    }}/>
+                                            </div>
+                                        ))
+                                    }
                                 </div>
-                                {
-                                    _.range(this.props.tweetsNumber).map((tweetNum, index) => (
-                                        <div className="tweets__data" key={`${tweetNum}-Number`}>
-                                            <p
-                                                className="tweets__text"
-                                                key={`${user.tweets[index].id}-${user.name}`}
-                                                dangerouslySetInnerHTML={{
-                                                    __html: user.tweets[index].text,
-                                                }}/>
-                                        </div>
-                                    ))
-                                }
-                            </div>
-                        ))
-                    }
-                </div>
+                            ))
+                        }
+                    </div>
+                }
                 {
                     this.state.users.length === 0 &&
                     <div className="tweets__error">There is no users with this name</div>
