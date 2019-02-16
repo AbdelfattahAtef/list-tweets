@@ -13,10 +13,10 @@ class Tweets extends Component {
     componentDidMount(){
         const tweetsNumber = +localStorage.getItem('tweetsNumber') <= 10 ? localStorage.getItem('tweetsNumber') : 10;
         localStorage.setItem('tweetsNumber', tweetsNumber);
-        if(localStorage.getItem('view') === 'list'){
-            utils.handleTweetsView('list')
-        }else{
+        if(localStorage.getItem('view') === 'grid' && window.screen.width > 1042){
             utils.handleTweetsView('grid');
+        }else{
+            utils.handleTweetsView('list')
         }
     }
 
@@ -86,7 +86,7 @@ class Tweets extends Component {
                                 </div>
                                 {
                                     _.range(this.props.tweetsNumber).map((tweetNum, index) => (
-                                        <div className="tweets__data">
+                                        <div className="tweets__data" key={`${tweetNum}-Number`}>
                                             <p className="tweets__text" key={`${user.tweets[index].id}-${user.name}`}>{user.tweets[index].text}</p>
                                             <div className="tweets__actions">
                                                 <p>

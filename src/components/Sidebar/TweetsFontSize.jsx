@@ -4,7 +4,7 @@ import utils from '../../utils';
 
 class TweetsFontSize extends Component{
     state = {
-        fontSize: null,
+        fontSize: undefined,
     };
     /**
      * Handle Font Size
