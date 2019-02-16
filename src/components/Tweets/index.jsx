@@ -1,32 +1,22 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import _ from 'lodash';
+import constants from '../../constants';
+import utils from '../../utils';
+import 'font-awesome/css/font-awesome.min.css';
 import './_tweets.sass';
-import constants from '../../constants'
 class Tweets extends Component {
-    state={
+    state = {
         users: constants.users
     };
 
-    /**
-     * Handle change tweets view
-     * @param type
-     */
-    handleChangeTweetsView(type){
-        if(type === 'list'){
-            document.getElementsByClassName('tweets__wrapper')[0].style.flexDirection = 'column';
-            const users = document.getElementsByClassName('tweets__user');
-            for(let i = 0; i < users.length; i++){
-                document.getElementsByClassName('tweets__user')[i].style.width = 'calc(100% - 40px)';
-                document.getElementsByClassName('tweets__user')[i].style.marginBottom = '15px';
-                document.getElementsByClassName('tweets__user-followers')[i].style.justifyContent = 'center';
-            }
+    componentDidMount(){
+        const tweetsNumber = +localStorage.getItem('tweetsNumber') <= 10 ? localStorage.getItem('tweetsNumber') : 10;
+        localStorage.setItem('tweetsNumber', tweetsNumber);
+        if(localStorage.getItem('view') === 'list'){
+            utils.handleTweetsView('list')
         }else{
-            document.getElementsByClassName('tweets__wrapper')[0].style.flexDirection = 'row';
-            const users = document.getElementsByClassName('tweets__user');
-            for(let i = 0; i < users.length; i++){
-                document.getElementsByClassName('tweets__user')[i].style.width = 'calc(30% - 40px)';
-                document.getElementsByClassName('tweets__user')[i].style.marginBottom = '0px';
-                document.getElementsByClassName('tweets__user-followers')[i].style.justifyContent = 'space-between';
-            }
+            utils.handleTweetsView('grid');
         }
     }
 
@@ -48,6 +38,7 @@ class Tweets extends Component {
             })
         }
     }
+
     render() {
         return (
             <div className="tweets">
@@ -56,15 +47,15 @@ class Tweets extends Component {
                         type="text"
                         onChange={(e) => this.handleFilterUsers(e)}
                         className="tweets__input"
-                        placeholder="Filter by user name"
+                        placeholder="Filter by @name"
                     />
                     <div>
                         <button
                             className="tweets__button"
-                            onClick={() => this.handleChangeTweetsView('grid')}>Grid</button>
+                            onClick={() => utils.handleTweetsView('grid')}>Grid</button>
                         <button
                             className="tweets__button"
-                            onClick={() => this.handleChangeTweetsView('list')}>List</button>
+                            onClick={() => utils.handleTweetsView('list')}>List</button>
                     </div>
                 </div>
                 <div className="tweets__wrapper">
@@ -93,9 +84,23 @@ class Tweets extends Component {
                                         </div>
                                     </div>
                                 </div>
-                                <p className="tweets__text">
-                                    You can always edit a bad page. You can’t edit a blank page.
-                                </p>
+                                {
+                                    _.range(this.props.tweetsNumber).map((tweetNum, index) => (
+                                        <div className="tweets__data">
+                                            <p className="tweets__text" key={`${user.tweets[index].id}-${user.name}`}>{user.tweets[index].text}</p>
+                                            <div className="tweets__actions">
+                                                <p>
+                                                    <i className="fa fa-thumbs-up"/>
+                                                    <span>{user.tweets[index].likes}</span>
+                                                </p>
+                                                <p>
+                                                    <i className="fa fa-retweet"/>
+                                                    <span>{user.tweets[index].retweets}</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    ))
+                                }
                             </div>
                         ))
                     }
@@ -108,5 +113,9 @@ class Tweets extends Component {
         );
     }
 }
+
+Tweets.propTypes = {
+    tweetsNumber: PropTypes.number,
+};
 
 export default Tweets;

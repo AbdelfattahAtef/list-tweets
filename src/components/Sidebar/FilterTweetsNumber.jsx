@@ -1,8 +1,7 @@
 import React from 'react';
-import constants from '../../constants';
-import utils from '../../utils';
+import PropTypes from 'prop-types';
 
-function FilterTweetsNumber(){
+function FilterTweetsNumber({numberOfTweets}){
     return (
         <React.Fragment>
             <div className="sidebar__title">
@@ -12,10 +11,16 @@ function FilterTweetsNumber(){
                 type="number"
                 className="sidebar__field"
                 min={1}
+                max={10}
+                onChange={(e) => numberOfTweets(e.target.value)}
             />
         </React.Fragment>
     );
 }
+
+FilterTweetsNumber.propTypes = {
+    numberOfTweets: PropTypes.func,
+};
 
 export default FilterTweetsNumber;
 

@@ -6,11 +6,9 @@ import TweetsBackgroundColor from './TweetsBackgroundColor';
 import TweetsColor from './TweetsColor';
 import TweetsFontType from './TweetsFontType';
 import TweetsFontSize from './TweetsFontSize';
-import OrderTweetsByDate from './OrderTweetsByDate';
 import FilterTweetsNumber from './FilterTweetsNumber';
 
 class Sidebar extends Component {
-
     componentDidMount() {
         const bodyBackgroundColor = localStorage.getItem('bodyBg');
         const tweetsColor = localStorage.getItem('tweetsColor');
@@ -29,7 +27,6 @@ class Sidebar extends Component {
             utils.handleFontSizeChange(fontSize)
         }
     }
-
     render(){
         const {toggleSidebar} = this.props;
         return (
@@ -39,8 +36,7 @@ class Sidebar extends Component {
                     <TweetsColor/>
                     <TweetsFontType/>
                     <TweetsFontSize/>
-                    <OrderTweetsByDate/>
-                    <FilterTweetsNumber/>
+                    <FilterTweetsNumber numberOfTweets={this.props.numberOfTweets}/>
                 </div>
             </div>
         );
@@ -49,6 +45,7 @@ class Sidebar extends Component {
 
 Sidebar.propTypes = {
     toggleSidebar: PropTypes.bool,
+    numberOfTweets: PropTypes.func,
 };
 
 export default Sidebar;
