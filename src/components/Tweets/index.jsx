@@ -11,8 +11,6 @@ class Tweets extends Component {
     };
 
     componentDidMount(){
-        const tweetsNumber = +localStorage.getItem('tweetsNumber') <= 10 ? localStorage.getItem('tweetsNumber') : 10;
-        localStorage.setItem('tweetsNumber', tweetsNumber);
         if(localStorage.getItem('view') === 'grid' && window.screen.width > 1042){
             utils.handleTweetsView('grid');
         }else{
@@ -87,17 +85,12 @@ class Tweets extends Component {
                                 {
                                     _.range(this.props.tweetsNumber).map((tweetNum, index) => (
                                         <div className="tweets__data" key={`${tweetNum}-Number`}>
-                                            <p className="tweets__text" key={`${user.tweets[index].id}-${user.name}`}>{user.tweets[index].text}</p>
-                                            <div className="tweets__actions">
-                                                <p>
-                                                    <i className="fa fa-thumbs-up"/>
-                                                    <span>{user.tweets[index].likes}</span>
-                                                </p>
-                                                <p>
-                                                    <i className="fa fa-retweet"/>
-                                                    <span>{user.tweets[index].retweets}</span>
-                                                </p>
-                                            </div>
+                                            <p
+                                                className="tweets__text"
+                                                key={`${user.tweets[index].id}-${user.name}`}
+                                                dangerouslySetInnerHTML={{
+                                                    __html: user.tweets[index].text,
+                                                }}/>
                                         </div>
                                     ))
                                 }
