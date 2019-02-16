@@ -2,10 +2,10 @@
 @import "../../styles/_breakpoints.sass"
 
 .tweets
-  width: 80%
+  width: calc(80% - 4%)
   margin: 0 2%
   +breakpoint(xsmax)
-    width: 100%
+    width: calc(100% - 10%)
     flex-direction: column
     margin: 0 5%
   &__options
@@ -78,13 +78,8 @@
   &__text
     font-size: 18px
     margin: 0 0 10px
+    display: flex
+    justify-content: center
   &__error
     font-size: 18px
     color: $color--red
-  &__actions
-    display: flex
-    justify-content: center
-    p
-      margin: 0 0 0 20px
-    span
-      margin-left: 5px
