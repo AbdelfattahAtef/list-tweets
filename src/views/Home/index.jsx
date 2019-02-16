@@ -23,10 +23,15 @@ class Home extends Component {
     };
 
     numberOfTweets = (value) => {
-        debugger
         this.setState({
             tweetsNumber: value && value <= 10 ? value : 10,
-        })
+        });
+        const script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = "https://platform.twitter.com/widgets.js";
+        script.charset = "utf-8";
+        document.getElementsByTagName("head")[0].appendChild(script);
+        return false;
     };
 
     render() {
