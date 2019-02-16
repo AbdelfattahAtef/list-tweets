@@ -57,10 +57,12 @@ export default {
         for(let i = 0; i < userDataItems.length; i++){
             document.getElementsByClassName('tweets__user-data')[i].style.borderColor = color;
         }
-        const tweetsData = document.getElementsByClassName('tweets__data');
-        for(let i = 0; i < tweetsData.length; i++){
+
+        const userTweetsItems = document.getElementsByClassName('tweets__data');
+        for(let i = 0; i < userTweetsItems.length; i++){
             document.getElementsByClassName('tweets__data')[i].style.borderColor = color;
         }
+
         const colorsItems = document.getElementsByClassName('sidebar__section--color__item');
         for(let i = 0; i < colorsItems.length; i++){
             document.getElementsByClassName('sidebar__section--color__item')[i].style.borderWidth = '1px';
@@ -77,14 +79,9 @@ export default {
      * @param fontFamily
      */
     updateTweetsFontFamily(fontFamily) {
-        const tweetsList = document.getElementsByClassName('tweets__text');
+        const tweetsList = document.getElementsByClassName('tweets__user-data');
         for(let i = 0; i < tweetsList.length; i++){
-            document.getElementsByClassName('tweets__text')[i].style.fontFamily = fontFamily
-        }
-
-        const tweetsData = document.getElementsByClassName('tweets__data');
-        for(let i = 0; i < tweetsData.length; i++){
-            document.getElementsByClassName('tweets__data')[i].style.fontFamily = fontFamily;
+            document.getElementsByClassName('tweets__user-data')[i].style.fontFamily = fontFamily
         }
         localStorage.setItem('fontFamily', fontFamily);
     },
@@ -94,9 +91,9 @@ export default {
      * @param fontSizeVal
      */
     handleFontSizeChange(fontSizeVal) {
-        const tweetsList = document.getElementsByClassName('tweets__text');
+        const tweetsList = document.getElementsByClassName('tweets__user-data');
         for(let i = 0; i<tweetsList.length; i++){
-            document.getElementsByClassName('tweets__text')[i].style.fontSize = fontSizeVal
+            document.getElementsByClassName('tweets__user-data')[i].style.fontSize = fontSizeVal
         }
         localStorage.setItem('fontSize', fontSizeVal);
     },
