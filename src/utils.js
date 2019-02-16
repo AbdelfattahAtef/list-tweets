@@ -50,11 +50,11 @@ export default {
     tweetTextColor(color){
         const usersItems = document.getElementsByClassName('tweets__user');
         for(let i = 0; i < usersItems.length; i++){
-            document.getElementsByClassName('tweets__user')[i].style.color = color;
             document.getElementsByClassName('tweets__user')[i].style.borderColor = color;
         }
         const userDataItems = document.getElementsByClassName('tweets__user-data');
         for(let i = 0; i < userDataItems.length; i++){
+            document.getElementsByClassName('tweets__user-data')[i].style.color = color;
             document.getElementsByClassName('tweets__user-data')[i].style.borderColor = color;
         }
 
