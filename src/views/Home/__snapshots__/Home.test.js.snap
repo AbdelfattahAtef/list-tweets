@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Home /> matches the snapshot 1`] = `
+<Fragment>
+  <div
+    className="home-wrapper"
+  >
+    <Navbar
+      toggleSidebar={[Function]}
+    />
+    <Header />
+    <div
+      className="home-wrapper__content"
+    >
+      <Sidebar
+        numberOfTweets={[Function]}
+        toggleSidebar={false}
+      />
+      <Tweets
+        tweetsNumber={10}
+      />
+    </div>
+  </div>
+  <Loader />
+</Fragment>
+`;

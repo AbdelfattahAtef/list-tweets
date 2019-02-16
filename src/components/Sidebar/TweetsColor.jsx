@@ -4,7 +4,6 @@ import utils from '../../utils';
 
 function TweetsColor(){
     return (
-
         <React.Fragment>
             <div className="sidebar__title">
                 Select Text Color

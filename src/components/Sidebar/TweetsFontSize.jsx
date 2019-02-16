@@ -36,7 +36,6 @@ class TweetsFontSize extends Component{
                                 ))
                             }
                         </select>
-
                     </div>
                 </div>
             </React.Fragment>

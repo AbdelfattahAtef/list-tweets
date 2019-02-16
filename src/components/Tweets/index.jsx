@@ -58,6 +58,7 @@ class Tweets extends Component {
                 </div>
                 <div className="tweets__wrapper">
                     {
+                        this.state.users.length > 0 &&
                         this.state.users.map(user => (
                             <div className="tweets__user" key={user.name}>
                                 <div className="tweets__user-data">

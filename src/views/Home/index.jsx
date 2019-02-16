@@ -30,10 +30,16 @@ class Home extends Component {
         })
     };
 
-    numberOfTweets = (value) => {
+    /**
+     *
+     * @param value
+     * @return {boolean}
+     */
+    changeNumberOfTweets = (value) => {
         this.setState({
             tweetsNumber: value && value <= 10 ? value : 10,
         });
+
         const script = document.createElement("script");
         script.type = "text/javascript";
         script.src = "https://platform.twitter.com/widgets.js";
@@ -51,7 +57,7 @@ class Home extends Component {
                     <div className="home-wrapper__content">
                         <Sidebar
                             toggleSidebar={this.state.toggleSidebar}
-                            numberOfTweets={this.numberOfTweets}/>
+                            numberOfTweets={this.changeNumberOfTweets}/>
                         <Tweets tweetsNumber={this.state.tweetsNumber}/>
                     </div>
                 </div>

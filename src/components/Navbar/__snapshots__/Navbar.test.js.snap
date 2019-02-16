@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Navbar /> matches the snapshot 1`] = `
+<div
+  className="navbar"
+>
+  <button
+    onClick={[Function]}
+  >
+    <i
+      className="fa fa-bars"
+    />
+  </button>
+</div>
+`;
