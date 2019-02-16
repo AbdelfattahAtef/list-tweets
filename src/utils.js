@@ -1,5 +1,30 @@
 export default {
     /**
+     * Handle change tweets view
+     * @param type
+     */
+    handleTweetsView(type){
+        if(type === 'list'){
+            document.getElementsByClassName('tweets__wrapper')[0].style.flexDirection = 'column';
+            const users = document.getElementsByClassName('tweets__user');
+            for(let i = 0; i < users.length; i++){
+                document.getElementsByClassName('tweets__user')[i].style.width = 'calc(100% - 40px)';
+                document.getElementsByClassName('tweets__user')[i].style.marginBottom = '15px';
+                document.getElementsByClassName('tweets__user-followers')[i].style.justifyContent = 'center';
+            }
+            localStorage.setItem("view", "list");
+        }else{
+            document.getElementsByClassName('tweets__wrapper')[0].style.flexDirection = 'row';
+            const users = document.getElementsByClassName('tweets__user');
+            for(let i = 0; i < users.length; i++){
+                document.getElementsByClassName('tweets__user')[i].style.width = 'calc(30% - 40px)';
+                document.getElementsByClassName('tweets__user')[i].style.marginBottom = '0px';
+                document.getElementsByClassName('tweets__user-followers')[i].style.justifyContent = 'space-between';
+            }
+            localStorage.setItem("view", "grid");
+        }
+    },
+    /**
      * Update background color for the body
      * @param color
      * @param e
@@ -32,6 +57,10 @@ export default {
         for(let i = 0; i < userDataItems.length; i++){
             document.getElementsByClassName('tweets__user-data')[i].style.borderColor = color;
         }
+        const tweetsData = document.getElementsByClassName('tweets__data');
+        for(let i = 0; i < tweetsData.length; i++){
+            document.getElementsByClassName('tweets__data')[i].style.borderColor = color;
+        }
         const colorsItems = document.getElementsByClassName('sidebar__section--color__item');
         for(let i = 0; i < colorsItems.length; i++){
             document.getElementsByClassName('sidebar__section--color__item')[i].style.borderWidth = '1px';
@@ -51,6 +80,11 @@ export default {
         const tweetsList = document.getElementsByClassName('tweets__text');
         for(let i = 0; i < tweetsList.length; i++){
             document.getElementsByClassName('tweets__text')[i].style.fontFamily = fontFamily
+        }
+
+        const tweetsData = document.getElementsByClassName('tweets__data');
+        for(let i = 0; i < tweetsData.length; i++){
+            document.getElementsByClassName('tweets__data')[i].style.fontFamily = fontFamily;
         }
         localStorage.setItem('fontFamily', fontFamily);
     },
