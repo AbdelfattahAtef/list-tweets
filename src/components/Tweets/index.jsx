@@ -11,10 +11,11 @@ class Tweets extends Component {
     };
 
     componentDidMount(){
-        if(localStorage.getItem('view') === 'grid' || window.screen.width > 1042){
-            utils.handleTweetsView('grid');
-        }else{
+        if(localStorage.getItem('view') === 'list' || window.screen.width < 1024){
             utils.handleTweetsView('list')
+        }
+        else{
+            utils.handleTweetsView('grid');
         }
     }
 
